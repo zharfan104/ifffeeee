@@ -11,6 +11,13 @@
   <title>Analisis Hasil UN SMA/Sederajat</title>
 
   <!-- Custom fonts for this theme -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
+
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
@@ -211,7 +218,6 @@
               <a class="dropdown-item" href="#about" onclick='return false;'>2017</a>
               <a class="dropdown-item" href="#about" onclick='return false;'>2018</a>
               <a class="dropdown-item" href="#about" onclick='return false;'>2019</a>
-              <a class="dropdown-item" href="#about" onclick='return false;'>Rata-Rata 5 Tahun</a>
             </div>
           </div>
 
@@ -247,18 +253,309 @@
 
   <!-- Contact Section -->
   <section class="page-section" id="contact">
+    <div class=" container">
+      <div class="row">
+
+        <div class="col-md-2">
+          <h6>Jenjang</h6>
+          <select class="custom-select" id="jenjang">
+            <option value="SMA IPA">SMA IPA</option>
+            <option value="SMA IPS">SMA IPS</option>
+            <option value="SMK">SMK</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <h6>Tahun</h6>
+          <select class="custom-select" id="tahun">
+            <option class="semuatahun" value="Semua">Semua Tahun</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <h6>Status</h6>
+          <select class="custom-select" id="status">
+            <option value="Semua">Semua</option>
+            <option value="Negeri">Negeri</option>
+            <option value="Swasta">Swasta</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <h6>Data</h6>
+          <select class="custom-select" id="data_ditampilkan">
+            <option value="Provinsi">Provinsi</option>
+            <option value="Kab/Kota">Kab/Kota</option>
+            <option value="Sekolah">Sekolah</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <div id="lingkup">
+            <h6>Lingkup</h6>
+            <select class="custom-select" id="lingkupnya">
+              <option value="Nasional">Nasional</option>
+              <option value="Provinsi">Provinsi</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
     <div class="container">
+      <div class="row">
 
-      <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tabel</h2>
+
+        <div class="col-md-8">
+
+          <div id="provinsiapa">
+            <h7>Provinsi</h7>
+            <select class="custom-select" id="provinsinya">
+
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <br>
+          <button class="btn btn-secondary" id="submit">Submit</button>
+          <br>
+        </div>
+      </div>
       <br>
+    </div>
 
-      <table data-toggle="table" data-url="JSON/ipa.json">
+    </div>
+
+    <div id="tableIPAProv">
+      <table class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json" data-height="460"
+        data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
         <thead>
           <tr>
-            <th data-field="JUMLAH PESERTA">Item ID</th>
-            <th data-field="KODE">Item Name</th>
-            <th data-field="NAMA PROVINSI">Item Price</th>
+            <th data-field="KODE">Kode</th>
+            <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+            <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+            <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+            <th data-field="FISIKA" data-sortable="true">Fisika</th>
+            <th data-field="KIMIA" data-sortable="true">Kimia</th>
+            <th data-field="BIOLOGI" data-sortable="true">Biologi</th>
+            <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tableIPSProv">
+      <table class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json" data-height="460"
+        data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="KODE">Kode</th>
+            <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+            <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+            <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+            <th data-field="EKONOMI" data-sortable="true">Ekonomi</th>
+            <th data-field="SOSIOLOGI" data-sortable="true">Sosiologi</th>
+            <th data-field="GEOGRAFI" data-sortable="true">Geografi</th>
+            <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tableSMKProv">
+      <table id="tableSMKProv" class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json"
+        data-height="460" data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="KODE">Kode</th>
+            <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+            <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+            <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+            <th data-field="KOMPETENSI" data-sortable="true">Kompetensi</th>
+            <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+          </tr>
+        </thead>
+      </table>
+
+    </div>
+    <div id="tablesekolahIPA">
+      <table class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json" data-height="460"
+        data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="SatuanPendidikan">Satuan Pendidikan</th>
+            <th data-field="NPSN">NPSN</th>
+            <th data-field="Status">Status</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Fisika" data-sortable="true">Fisika</th>
+            <th data-field="Kimia" data-sortable="true">Kimia</th>
+            <th data-field="Biologi" data-sortable="true">Biologi</th>
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+            <th data-field="Kabupaten" data-sortable="true">Kabupaten</th>
+
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tablesekolahIPS">
+      <table class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json" data-height="460"
+        data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="SatuanPendidikan">Satuan Pendidikan</th>
+            <th data-field="NPSN">NPSN</th>
+            <th data-field="Status">Status</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Ekonomi" data-sortable="true">Ekonomi</th>
+            <th data-field="Sosiologi" data-sortable="true">Sosiologi</th>
+            <th data-field="Geografi" data-sortable="true">Geografi</th>
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+            <th data-field="Kabupaten" data-sortable="true">Kabupaten</th>
+
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tablesekolahSMK">
+      <table class="table" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json" data-height="460"
+        data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="SatuanPendidikan">Satuan Pendidikan</th>
+            <th data-field="NPSN">NPSN</th>
+            <th data-field="Status">Status</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Tahun">Tahun</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Kompetensi" data-sortable="true">Biologi</th>
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+            <th data-field="Kabupaten" data-sortable="true">Kabupaten</th>
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tablekabSMK">
+      <table class="table tablekab" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json"
+        data-height="460" data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="Kabupaten">Kabupaten</th>
+            <th data-field="JumlahSekolah">Jumlah Sekolah</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Kompetensi" data-sortable="true">Kompetensi</th>
+            <th data-field="Rata" data-sortable="true">Rerata Nilai</th>
+            <th data-field="Provinsi" data-sortable="true">Provinsi</th>
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div id="tablekabIPS">
+      <table class="table tablekab" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json"
+        data-height="460" data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="Kabupaten">Kabupaten</th>
+            <th data-field="JumlahSekolah">Jumlah Sekolah</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Ekonomi" data-sortable="true">Ekonomi</th>
+            <th data-field="Sosiologi" data-sortable="true">Sosiologi</th>
+            <th data-field="Geografi" data-sortable="true">Geografi</th>
+            <th data-field="Provinsi" data-sortable="true">Provinsi</th>
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="tablekabIPA">
+      <table class="table tablekab" data-toggle="table" data-sort-stable="true" data-url="JSON/ipa.json"
+        data-height="460" data-pagination="true" data-side-pagination="client" data-page-list="[10, 25, 50, 100, All]"
+        data-query-params=" queryParams">
+        >
+        <thead>
+          <tr>
+            <th data-field="No">No</th>
+            <th data-field="Kode">Kode</th>
+            <th data-field="Kabupaten">Kabupaten</th>
+            <th data-field="JumlahSekolah">Jumlah Sekolah</th>
+            <th data-field="JumlahPeserta">Jumlah Peserta</th>
+            <th data-field="Bindo" data-sortable="true">Bahasa Indonesia</th>
+            <th data-field="Bing" data-sortable="true">Bahasa Inggris</th>
+            <th data-field="Math" data-sortable="true">Matematika</th>
+            <th data-field="Fisika" data-sortable="true">Fisika</th>
+            <th data-field="Kimia" data-sortable="true">Kimia</th>
+            <th data-field="Biologi" data-sortable="true">Biologi</th>
+            <th data-field="Provinsi" data-sortable="true">Provinsi</th>
+
+            <th data-field="Tahun" data-sortable="true">Tahun</th>
+
+
           </tr>
         </thead>
       </table>
@@ -586,8 +883,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -595,27 +891,33 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="css/bootstrap-table.min.css">
 
+
+  <!-- Plugin JavaScript -->
+
+  <!-- Contact Form JavaScript -->
+
   <!-- Latest compiled and minified JavaScript -->
-  <script src="js/bootstrap-table.min.js"></script>
   <!-- Latest compiled and minified Locales -->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
-  <script type="text/javascript" src="id-states3.js"></script>
+  <script type="text/javascript" src="idpeningkatan.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+  </script>
 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
   <script src="getData.js"></script>
+  <script src="tabel.js"></script>
 
   <script src="map.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Contact Form JavaScript -->
-  <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contact_me.js"></script>
-
   <!-- Custom scripts for this template -->
-  <script src="js/freelancer.min.js"></script>
 
 </body>
 

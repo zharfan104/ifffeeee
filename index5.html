@@ -1,0 +1,41 @@
+<link href="js/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+<script src="vendor/jquery/jquery.js"></script>
+<script src="js/bootstrap-table.min.js"></script>
+<script src="js/popper.min.js"></script>
+<div class="toolbar">
+    <button id="refresh" class="btn btn-secondary">Refresh</button>
+</div>
+<div class="toolbar">
+    <button id="refresh2" class="btn btn-secondary">Refresh</button>
+</div>
+<table id="table" data-toggle="table" data-toolbar=".toolbar">
+    <thead>
+        <tr>
+            <th data-field="KODE">ID</th>
+            <th data-field="NAMA PROVINSI">Item Name</th>
+            <th data-field="FISIKA">Item Price</th>
+        </tr>
+    </thead>
+</table>
+
+<script>
+    var $table = $('#table')
+
+    $(function () {
+        $('#refresh').click(function () {
+            $table.bootstrapTable('refresh', {
+                url: 'JSON/ipanegri.json'
+            })
+        })
+    })
+    $(function () {
+        $('#refresh2').click(function () {
+            $table.bootstrapTable('refresh', {
+                url: 'JSON/ipaswas.json'
+            })
+        })
+    })
+</script>

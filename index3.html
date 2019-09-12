@@ -3,10 +3,7 @@
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 <script src="vendor/jquery/jquery.js"></script>
-<script src="js/tableExport.min.js"></script>
 <script src="js/bootstrap-table.min.js"></script>
-<script src="js/bootstrap-table-locale-all.min.js"></script>
-<script src="js/bootstrap-table-export.min.js"></script>
 <script src="js/popper.min.js"></script>
 </script>
 
@@ -20,208 +17,206 @@
         margin-right: 10px;
     }
 </style>
+<div class="container">
+    <div class="row">
+        <h6>Jenjang</h6>
+        <select class="custom-select" id="jenjang">
+            <option value="SMA IPA">SMA IPA</option>
+            <option value="SMA IPS">SMA IPS</option>
+            <option value="SMK">SMK</option>
+        </select>
 
-<div class="select">
-    <select class="form-control" id="locale">
-        <option value="af-ZA">af-ZA</option>
-        <option value="ar-SA">ar-SA</option>
-        <option value="ca-ES">ca-ES</option>
-        <option value="cs-CZ">cs-CZ</option>
-        <option value="da-DK">da-DK</option>
-        <option value="de-DE">de-DE</option>
-        <option value="el-GR">el-GR</option>
-        <option value="en-US" selected>en-US</option>
-        <option value="es-AR">es-AR</option>
-        <option value="es-CL">es-CL</option>
-        <option value="es-CR">es-CR</option>
-        <option value="es-ES">es-ES</option>
-        <option value="es-MX">es-MX</option>
-        <option value="es-NI">es-NI</option>
-        <option value="es-SP">es-SP</option>
-        <option value="et-EE">et-EE</option>
-        <option value="eu-EU">eu-EU</option>
-        <option value="fa-IR">fa-IR</option>
-        <option value="fi-FI">fi-FI</option>
-        <option value="fr-BE">fr-BE</option>
-        <option value="fr-FR">fr-FR</option>
-        <option value="he-IL">he-IL</option>
-        <option value="hr-HR">hr-HR</option>
-        <option value="hu-HU">hu-HU</option>
-        <option value="id-ID">id-ID</option>
-        <option value="it-IT">it-IT</option>
-        <option value="ja-JP">ja-JP</option>
-        <option value="ka-GE">ka-GE</option>
-        <option value="ko-KR">ko-KR</option>
-        <option value="ms-MY">ms-MY</option>
-        <option value="nb-NO">nb-NO</option>
-        <option value="nl-NL">nl-NL</option>
-        <option value="pl-PL">pl-PL</option>
-        <option value="pt-BR">pt-BR</option>
-        <option value="pt-PT">pt-PT</option>
-        <option value="ro-RO">ro-RO</option>
-        <option value="ru-RU">ru-RU</option>
-        <option value="sk-SK">sk-SK</option>
-        <option value="sv-SE">sv-SE</option>
-        <option value="th-TH">th-TH</option>
-        <option value="tr-TR">tr-TR</option>
-        <option value="uk-UA">uk-UA</option>
-        <option value="ur-PK">ur-PK</option>
-        <option value="uz-Latn-UZ">uz-Latn-UZ</option>
-        <option value="vi-VN">vi-VN</option>
-        <option value="zh-CN">zh-CN</option>
-        <option value="zh-TW">zh-TW</option>
-    </select>
+        <h6>Tahun</h6>
+        <select class="custom-select" id="tahun">
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="Semua">Semua Tahun</option>
+
+
+        </select>
+        <h6>Status</h6>
+        <select class="custom-select" id="status">
+            <option value="Semua">Semua</option>
+            <option value="Negeri">Negeri</option>
+            <option value="Swasta">Swasta</option>
+        </select>
+        <h6>Data Yang Ditampilkan</h6>
+        <select class="custom-select" id="data_ditampilkan">
+            <option value="Provinsi">Provinsi</option>
+            <option value="Kab/Kota">Kab/Kota</option>
+            <option value="Sekolah">Sekolah</option>
+        </select>
+
+        <div id="lingkup">
+            <h6>Lingkup</h6>
+            <select class="custom-select">
+                <option value="Nasional">Nasional</option>
+                <option value="Provinsi">Provinsi</option>
+            </select>
+        </div>
+
+
+
+
+    </div>
+    <br>
+    <button class="btn btn-secondary" id="submit">Submit</button>
+
+    <br>
 </div>
 
-<div id="toolbar">
-    <button id="remove" class="btn btn-danger" disabled>
-        <i class="glyphicon glyphicon-remove"></i> Delete
-    </button>
 </div>
-<table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true"
-    data-show-fullscreen="true" data-show-columns="true" data-detail-view="true" data-show-export="true"
-    data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2"
-    data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]"
-    data-show-footer="true" data-side-pagination="server" data-url="js/data.json"
-    data-response-handler="responseHandler">
-</table>
+<div id="tableIPAProv">
+    <table class="table" data-toggle="table" data-query-params="queryParams" data-sort-stable="true"
+        data-url="JSON/ipa.json">
+        >
+        <thead>
+            <tr>
+                <th data-field="KODE">Kode</th>
+                <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+                <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+                <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+                <th data-field="Tahun">Tahun</th>
+                <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+                <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+                <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+                <th data-field="FISIKA" data-sortable="true">Fisika</th>
+                <th data-field="KIMIA" data-sortable="true">Kimia</th>
+                <th data-field="BIOLOGI" data-sortable="true">Biologi</th>
+                <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+            </tr>
+        </thead>
+    </table>
+</div>
+<div id="tableIPSProv">
+    <table class="table" data-toggle="table" data-query-params="queryParams" data-sort-stable="true"
+        data-url="JSON/ipa.json">
+        >
+        <thead>
+            <tr>
+                <th data-field="KODE">Kode</th>
+                <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+                <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+                <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+                <th data-field="Tahun">Tahun</th>
+                <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+                <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+                <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+                <th data-field="EKONOMI" data-sortable="true">Ekonomi</th>
+                <th data-field="SOSIOLOGI" data-sortable="true">Sosiologi</th>
+                <th data-field="GEOGRAFI" data-sortable="true">Geografi</th>
+                <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+            </tr>
+        </thead>
+    </table>
+</div>
+<div id="tableSMKProv">
+    <table id="tableSMKProv" class="table" data-toggle="table" data-query-params="queryParams" data-sort-stable="true"
+        data-url="JSON/ipa.json">
+        >
+        <thead>
+            <tr>
+                <th data-field="KODE">Kode</th>
+                <th data-field="NAMA PROVINSI">Nama Provinsi</th>
+                <th data-field="JUMLAH SATUAN PENDIDIKAN">Jumlah Satuan Pendidikan</th>
+                <th data-field="JUMLAH PESERTA">Jumlah Peserta</th>
+                <th data-field="Tahun">Tahun</th>
+                <th data-field="BAHASA INDONESIA" data-sortable="true">Bahasa Indonesia</th>
+                <th data-field="BAHASA INGGRIS" data-sortable="true">Bahasa Inggris</th>
+                <th data-field="MATEMATIKA" data-sortable="true">Matematika</th>
+                <th data-field="KOMPETENSI" data-sortable="true">Kompetensi</th>
+                <th data-field="RERATA NILAI" data-sortable="true">Rerata Nilai</th>
+
+            </tr>
+        </thead>
+    </table>
+
+</div>
 
 <script>
-    var $table = $('#table')
-    var $remove = $('#remove')
-    var selections = []
-
-    function getIdSelections() {
-        return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
-        })
-    }
-
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1
-        })
-        return res
-    }
-
-    function detailFormatter(index, row) {
-        var html = []
-        $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-        })
-        return html.join('')
-    }
-
-    function operateFormatter(value, row, index) {
-        return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="fa fa-heart"></i>',
-            '</a>  ',
-            '<a class="remove" href="javascript:void(0)" title="Remove">',
-            '<i class="fa fa-trash"></i>',
-            '</a>'
-        ].join('')
-    }
-
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row))
-        },
-        'click .remove': function (e, value, row, index) {
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-            })
+    $('#lingkup').hide();
+    $("#data_ditampilkan").change(function () {
+        var selectedCountry = $(this).children("option:selected").val();
+        if (selectedCountry == "Provinsi") {
+            $('#lingkup').hide();
+        } else if (selectedCountry == "Kab/Kota") {
+            $('#lingkup').show();
+        } else if (selectedCountry == "Sekolah") {
+            $('#lingkup').show();
         }
-    }
-
-    function totalTextFormatter(data) {
-        return 'Total'
-    }
-
-    function totalNameFormatter(data) {
-        return data.length
-    }
-
-    function totalPriceFormatter(data) {
-        var field = this.field
-        return '$' + data.map(function (row) {
-            return +row[field].substring(1)
-        }).reduce(function (sum, i) {
-            return sum + i
-        }, 0)
-    }
-
-    function initTable() {
-        $table.bootstrapTable('destroy').bootstrapTable({
-            height: 550,
-            locale: $('#locale').val(),
-            columns: [
-                [{
-                    field: 'state',
-                    checkbox: true,
-                    rowspan: 2,
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    title: 'Item ID',
-                    field: 'id',
-                    rowspan: 2,
-                    align: 'center',
-                    valign: 'middle',
-                    sortable: true,
-                    footerFormatter: totalTextFormatter
-                }, {
-                    title: 'Item Detail',
-                    colspan: 3,
-                    align: 'center'
-                }],
-                [{
-                    field: 'name',
-                    title: 'Item Name',
-                    sortable: true,
-                    footerFormatter: totalNameFormatter,
-                    align: 'center'
-                }, {
-                    field: 'price',
-                    title: 'Item Price',
-                    sortable: true,
-                    align: 'center',
-                    footerFormatter: totalPriceFormatter
-                }, {
-                    field: 'operate',
-                    title: 'Item Operate',
-                    align: 'center',
-                    events: window.operateEvents,
-                    formatter: operateFormatter
-                }]
-            ]
-        })
-        $table.on('check.bs.table uncheck.bs.table ' +
-            'check-all.bs.table uncheck-all.bs.table',
-            function () {
-                $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-
-                // save your data, here just save the current page
-                selections = getIdSelections()
-                // push or splice the selections if you want to save all data selections
-            })
-        $table.on('all.bs.table', function (e, name, args) {
-            console.log(name, args)
-        })
-        $remove.click(function () {
-            var ids = getIdSelections()
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            })
-            $remove.prop('disabled', true)
-        })
-    }
-
+    });
+    var $table = $('.table');
     $(function () {
-        initTable()
+        $('#submit').click(function () {
+            $table.bootstrapTable('refreshOptions', {
+                filterOptions: {
+                    filterAlgorithm: "and"
+                }
+            })
+            if ($('#tahun').children("option:selected").val() != "Semua") {
+                $table.bootstrapTable('filterBy', {
+                    "Tahun": $('#tahun').children("option:selected").val()
+                })
+            }
+            console.log($('#tahun').children("option:selected").val())
+            if ($('#jenjang').children("option:selected").val() == "SMA IPA") {
+                $('#tableSMKProv').hide();
+                $('#tableIPSProv').hide();
+                $('#tableIPAProv').show();
+                if ($('#status').children("option:selected").val() == "Semua") {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ipa.json'
+                    })
+                } else if (($('#status').children("option:selected").val() == "Negeri")) {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ipanegri.json'
+                    })
+                } else {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ipaswas.json'
+                    })
+                }
+            } else if ($('#jenjang').children("option:selected").val() == "SMA IPS") {
+                $('#tableSMKProv').hide();
+                $('#tableIPSProv').show();
+                $('#tableIPAProv').hide();
 
-        $('#locale').change(initTable)
+                if ($('#status').children("option:selected").val() == "Semua") {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ips.json'
+                    })
+                } else if (($('#status').children("option:selected").val() == "Negeri")) {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ipsnegri.json'
+                    })
+                } else {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/ipsswas.json'
+                    })
+                }
+            } else if ($('#jenjang').children("option:selected").val() == "SMK") {
+                $('#tableSMKProv').show();
+                $('#tableIPSProv').hide();
+                $('#tableIPAProv').hide();
+                if ($('#status').children("option:selected").val() == "Semua") {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/SMK.json'
+                    })
+                } else if (($('#status').children("option:selected").val() == "Negeri")) {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/SMKnegri.json'
+                    })
+                } else {
+                    $table.bootstrapTable('refresh', {
+                        url: 'JSON/SMKswas.json'
+                    })
+                }
+            }
+        })
     })
 </script>
