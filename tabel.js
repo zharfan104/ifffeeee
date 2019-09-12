@@ -12,7 +12,7 @@ var mapprov = new Object();
 for (i = 0; i < provinsi.length; i++) {
     mapprov[provinsi[i]] = i;
 }
-var mapstatus = {
+var mapstatussek = {
     "Semua": "gab",
     "Negeri": "negri",
     "Swasta": "swas"
@@ -24,6 +24,10 @@ var maptahun = {
     "2018": "18",
     "2019": "19",
 
+}
+var mapstatus = {
+    "Swasta": "S",
+    "Negeri": "N"
 }
 var mapjenjang = {
     "SMA IPS": "ips",
@@ -89,6 +93,7 @@ $("#data_ditampilkan").change(function () {
 });
 var $table = $('.table');
 var $tablekab = $('.tablekab');
+var $tableseko = $('.tableseko');
 
 $(function () {
     $('#submit').click(function () {
@@ -136,6 +141,22 @@ $(function () {
             })
         }
 
+        $tableseko.bootstrapTable('refreshOptions', {
+            filterOptions: {
+                filterAlgorithm: "or"
+            }
+        })
+        console.log("as")
+        if ($('#status').children("option:selected").val() != "Semua") {
+            console.log("asd")
+            var statuss = $('#status').children("option:selected").val()
+            var no_statuss = mapstatus[statuss];
+            console.log(no_status)
+            $tableseko.bootstrapTable('filterBy', {
+                "Status": no_statuss
+
+            })
+        }
 
         if ($('#data_ditampilkan').children("option:selected").val() == "Provinsi") {
             if ($('#jenjang').children("option:selected").val() == "SMA IPA") {
@@ -180,7 +201,7 @@ $(function () {
             }
         } else if ($('#data_ditampilkan').children("option:selected").val() == "Kab/Kota") {
             var no_jenjang = mapjenjang[($('#jenjang').children("option:selected").val())]
-            var no_status = mapstatus[($('#status').children("option:selected").val())]
+            var no_status = mapstatussek[($('#status').children("option:selected").val())]
             var namafile = no_jenjang + "_" + no_status;
             console.log(namafile)
             $('.table').bootstrapTable('refresh', {
